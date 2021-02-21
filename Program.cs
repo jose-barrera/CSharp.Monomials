@@ -1,131 +1,130 @@
 ﻿using System;
 
-namespace Monomios
+namespace Monomials
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //ProbarImpresionMonomios();
+            //TestMonomialStringRepresentation();
 
-            Console.WriteLine("Este programa te permite realizar operaciones aritméticas");
-            Console.WriteLine("básicas con 2 monomios, siempre que se cumplan las condiciones");
-            Console.WriteLine("para estas operaciones.");
+            Console.WriteLine("This program allows to perform basic arithmetic with two");
+            Console.WriteLine("monomials, assuming that conditions are complied.");
             Console.WriteLine("");
 
-            Console.WriteLine("*** MONOMIO 1 ***");
-            Console.Write("Dime el coeficiente 1: ");
+            Console.WriteLine("*** MONOMIAL 1 ***");
+            Console.Write("Write the coefficient 1: ");
             double c1 = Double.Parse(Console.ReadLine());
-            Console.Write("Dime el exponente 1: ");
+            Console.Write("Write the exponent 1: ");
             int e1 = Int32.Parse(Console.ReadLine());
             Console.WriteLine("");
-            Monomio M1 = new Monomio(c1, e1);
+            Monomial M1 = new Monomial(c1, e1);
 
-            Console.WriteLine("*** MONOMIO 2 ***");
-            Console.Write("Dime el coeficiente 2: ");
+            Console.WriteLine("*** MONOMIAL 2 ***");
+            Console.Write("Write the coefficient 2: ");
             double c2 = Double.Parse(Console.ReadLine());
-            Console.Write("Dime el exponente 2: ");
+            Console.Write("Write the exponent 2: ");
             int e2 = Int32.Parse(Console.ReadLine());
             Console.WriteLine("");
-            Monomio M2 = new Monomio(c2, e2);
+            Monomial M2 = new Monomial(c2, e2);
 
-            Monomio suma = null;
-            Monomio resta = null;
-            Monomio producto = null;
-            Monomio cociente = null;
+            Monomial sum = null;
+            Monomial difference = null;
+            Monomial product = null;
+            Monomial quotient = null;
 
-            // Suma de monomios: M1 + M2
+            // Monomial addition: M1 + M2
             try
             {
-                suma = M1.Sumar(M2);
-                Console.WriteLine("SUMA: " + suma.Imprimir());
+                sum = M1.Add(M2);
+                Console.WriteLine("SUM: " + sum.ToString());
             }
             catch (Exception e)
             {
-                Console.WriteLine("SUMA: Operación inválida.");
+                Console.WriteLine("SUM: Invalid operation.");
             }
-            // Resta de monomios: M1 - M2
+            // Monomial subtraction: M1 - M2
             try
             {
-                resta = M1.Restar(M2);
-                Console.WriteLine("RESTA: " + resta.Imprimir());
+                difference = M1.Subtract(M2);
+                Console.WriteLine("DIFFERENCE: " + difference.ToString());
             }
             catch (Exception e)
             {
-                Console.WriteLine("RESTA: Operación inválida.");
+                Console.WriteLine("DIFFERENCE: Invalid operation.");
             }
-            // Multiplicación de monomios: M1 * M2
-            producto = M1.Multiplicar(M2);
-            Console.WriteLine("PRODUCTO: " + producto.Imprimir());
-            // División de monomios: M1 / M2;
+            // Monomial multiplication: M1 * M2
+            product = M1.Multiply(M2);
+            Console.WriteLine("PRODUCT: " + product.ToString());
+            // Monomial division: M1 / M2;
             try
             {
-                cociente = M1.Dividir(M2);
-                Console.WriteLine("COCIENTE: " + cociente.Imprimir());
+                quotient = M1.Divide(M2);
+                Console.WriteLine("QUOTIENT: " + quotient.ToString());
             }
             catch (Exception e)
             {
-                Console.WriteLine("COCIENTE: Operación inválida.");
+                Console.WriteLine("QUOTIENT: Invalid operation.");
             }
             Console.WriteLine();
 
-            Console.Write("Dime el valor para evaluar: ");
-            double valor = Double.Parse(Console.ReadLine());
+            Console.Write("Write the value to evaluate: ");
+            double value = Double.Parse(Console.ReadLine());
             Console.WriteLine();
 
-            Console.WriteLine("El valor del M1 es " + M1.Evaluar(valor));
-            Console.WriteLine("El valor del M2 es " + M2.Evaluar(valor));
-            if (suma != null)
+            Console.WriteLine("Value of M1 is " + M1.Evaluate(value));
+            Console.WriteLine("Value of M2 is " + M2.Evaluate(value));
+            if (sum != null)
             {
-                Console.WriteLine("El valor de M1 + M2 es " + suma.Evaluar(valor));
+                Console.WriteLine("Value of M1 + M2 is " + sum.Evaluate(value));
             }
             else
             {
-                Console.WriteLine("El valor de M1 + M2 es operación inválida.");
+                Console.WriteLine("Value of M1 + M2 cannot be computed because is an invalid operation.");
             }
-            if (resta != null)
+            if (difference != null)
             {
-                Console.WriteLine("El valor de M1 - M2 es " + resta.Evaluar(valor));
-            }
-            else
-            {
-                Console.WriteLine("El valor de M1 - M2 es operación inválida.");
-            }
-            Console.WriteLine("El valor de M1 * M2 es " + producto.Evaluar(valor));
-            if (cociente != null)
-            {
-                Console.WriteLine("El valor de M1 / M2 es " + cociente.Evaluar(valor));
+                Console.WriteLine("Value of M1 - M2 is " + difference.Evaluate(value));
             }
             else
             {
-                Console.WriteLine("El valor de M1 / M2 es operación inválida.");
+                Console.WriteLine("Value of M1 - M2 cannot be computed because is an invalid operation.");
+            }
+            Console.WriteLine("Value of M1 * M2 is " + product.Evaluate(value));
+            if (quotient != null)
+            {
+                Console.WriteLine("Value of M1 / M2 is " + quotient.Evaluate(value));
+            }
+            else
+            {
+                Console.WriteLine("Value of M1 / M2 cannot be computed because is an invalid operation.");
             }
 
             Console.WriteLine("");
-            Console.WriteLine("¡MUCHAS GRACIAS POR USAR ESTE PROGRAMA!");
+            Console.WriteLine("THANK YOU FOR USING THIS PROGRAM!");
 
             Console.ReadLine();
         }
-        static void ProbarImpresionMonomios()
+        static void TestMonomialStringRepresentation()
         {
-            Console.WriteLine(new Monomio(0, 0).Imprimir());
-            Console.WriteLine(new Monomio(0, 1).Imprimir());
-            Console.WriteLine(new Monomio(0, 5).Imprimir());
-            Console.WriteLine(new Monomio(1, 0).Imprimir());
-            Console.WriteLine(new Monomio(1, 1).Imprimir());
-            Console.WriteLine(new Monomio(1, 5).Imprimir());
-            Console.WriteLine(new Monomio(7.5, 0).Imprimir());
-            Console.WriteLine(new Monomio(7.5, 1).Imprimir());
-            Console.WriteLine(new Monomio(7.5, 5).Imprimir());
-            Console.WriteLine(new Monomio(-0, 0).Imprimir());
-            Console.WriteLine(new Monomio(-0, 1).Imprimir());
-            Console.WriteLine(new Monomio(-0, 5).Imprimir());
-            Console.WriteLine(new Monomio(-1, 0).Imprimir());
-            Console.WriteLine(new Monomio(-1, 1).Imprimir());
-            Console.WriteLine(new Monomio(-1, 5).Imprimir());
-            Console.WriteLine(new Monomio(-7.5, 0).Imprimir());
-            Console.WriteLine(new Monomio(-7.5, 1).Imprimir());
-            Console.WriteLine(new Monomio(-7.5, 5).Imprimir());
+            Console.WriteLine(new Monomial(0, 0).ToString());
+            Console.WriteLine(new Monomial(0, 1).ToString());
+            Console.WriteLine(new Monomial(0, 5).ToString());
+            Console.WriteLine(new Monomial(1, 0).ToString());
+            Console.WriteLine(new Monomial(1, 1).ToString());
+            Console.WriteLine(new Monomial(1, 5).ToString());
+            Console.WriteLine(new Monomial(7.5, 0).ToString());
+            Console.WriteLine(new Monomial(7.5, 1).ToString());
+            Console.WriteLine(new Monomial(7.5, 5).ToString());
+            Console.WriteLine(new Monomial(-0, 0).ToString());
+            Console.WriteLine(new Monomial(-0, 1).ToString());
+            Console.WriteLine(new Monomial(-0, 5).ToString());
+            Console.WriteLine(new Monomial(-1, 0).ToString());
+            Console.WriteLine(new Monomial(-1, 1).ToString());
+            Console.WriteLine(new Monomial(-1, 5).ToString());
+            Console.WriteLine(new Monomial(-7.5, 0).ToString());
+            Console.WriteLine(new Monomial(-7.5, 1).ToString());
+            Console.WriteLine(new Monomial(-7.5, 5).ToString());
         }
     }
 }
