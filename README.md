@@ -1,4 +1,4 @@
-# Monomials C#
+# Monomials
 
 A monomial **M(x)** is a product of powers of the variable *x* having nonnegative integer exponents and a real coefficient.
 
