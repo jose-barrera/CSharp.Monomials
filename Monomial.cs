@@ -182,7 +182,7 @@ namespace Monomials
             {
                 result = sign + coefficient + power;
                 // "1x" is commonly written as only "x".
-                result = result.Replace("1 x", "x");
+                result = result.Replace(" 1 x", " x");
             }
 
             return result;

@@ -125,6 +125,9 @@ namespace Monomials
             Console.WriteLine(new Monomial(-7.5, 0).ToString());
             Console.WriteLine(new Monomial(-7.5, 1).ToString());
             Console.WriteLine(new Monomial(-7.5, 5).ToString());
+            Console.WriteLine(new Monomial(91, 0).ToString());
+            Console.WriteLine(new Monomial(91, 1).ToString());
+            Console.WriteLine(new Monomial(91, 5).ToString());
         }
     }
 }
